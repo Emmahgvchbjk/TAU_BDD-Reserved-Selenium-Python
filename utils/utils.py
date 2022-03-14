@@ -1,5 +1,6 @@
 import random
 import string
+from pages.search_page import SearchPage
 
 class CreateStrings():
 
@@ -8,10 +9,11 @@ class CreateStrings():
         return my_string
 
     def generate_mail(lenght):
-        adress = ''.join(random.choice(string.ascii_lowercase) for i in range(lenght))
+        address = ''.join(random.choice(string.ascii_lowercase) for i in range(lenght))
         domain = ''.join(random.choice(string.ascii_lowercase) for i in range(lenght-3))
-        return adress+"@"+domain+".com"
+        return address+"@"+domain+".com"
 
-print(CreateStrings.generate_string(6))
-print(CreateStrings.generate_mail(6))
+
+
+
 

@@ -16,6 +16,7 @@ class RegisterPage:
     PASSWORD_FIELD = (By.ID, "password_id")
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, "button[data-selen='create-account-submit']")
     ACCEPT_COOKIES_BUTTON = (By.ID, 'cookiebotDialogOkButton')
+    WARNING_TEXT = (By.CLASS_NAME, 'text-field__ErrorMessage-sc-1vll61a-4 WGIUj')
 
     def __init__(self, browser):
         self.browser = browser
@@ -30,7 +31,6 @@ class RegisterPage:
     def type_firstname(self, firstname):
         self.browser.find_element(*self.FIRSTNAME_FIELD).send_keys(firstname)
 
-
     def type_lastname(self, lastname):
         self.browser.find_element(*self.LASTNAME_FIELD).send_keys(lastname)
 
@@ -38,5 +38,7 @@ class RegisterPage:
         self.browser.find_element(*self.PASSWORD_FIELD).send_keys(password)
 
     def click_create_account_button(self):
-        WebDriverWait(self.browser, 10).until(EC.presence_of_element_located(self.CREATE_ACCOUNT_BUTTON)).click()
-        # self.browser.find_element(*self.CREATE_ACCOUNT_BUTTON).click()
+        WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable(self.CREATE_ACCOUNT_BUTTON)).click()
+
+    def check_warning_is_displayed(self):
+        self.browser.find_element(*self.WARNING_TEXT).is_displayed()
