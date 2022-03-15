@@ -1,8 +1,12 @@
 Feature: search on website
 
-  Scenario: search for "pijama" items
+  Scenario Outline: check search functionality
     Given open the search page
-    When the user types "pijama" in the search bar
-    Then the items that have the word "pijama" in title are displayed
+    When the user types "<item>" in the search bar
+    Then each result contains "<item>" in name
 
-
+  Examples: Searched item
+       | item|
+       | pijama |
+       | rochie |
+       | bluza |

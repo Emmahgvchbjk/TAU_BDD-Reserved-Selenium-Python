@@ -1,6 +1,5 @@
 import random
 import string
-from pages.search_page import SearchPage
 
 class CreateStrings():
 
