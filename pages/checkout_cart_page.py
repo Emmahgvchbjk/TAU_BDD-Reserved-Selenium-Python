@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 class CheckoutCartPage:
     #URL
     URL = 'https://www.reserved.com/ro/ro/checkout/cart/'

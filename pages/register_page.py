@@ -16,7 +16,8 @@ class RegisterPage:
     PASSWORD_FIELD = (By.ID, "password_id")
     CREATE_ACCOUNT_BUTTON = (By.CSS_SELECTOR, "button[data-selen='create-account-submit']")
     ACCEPT_COOKIES_BUTTON = (By.ID, 'cookiebotDialogOkButton')
-    WARNING_TEXT = (By.CLASS_NAME, 'text-field__ErrorMessage-sc-1vll61a-4 WGIUj')
+    WARNING_TEXT = (By.CSS_SELECTOR, 'div.invalid>div')
+    WARNING = "Vă rugăm să introduceți numai caractere valide"
 
     def __init__(self, browser):
         self.browser = browser
@@ -40,5 +41,12 @@ class RegisterPage:
     def click_create_account_button(self):
         WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable(self.CREATE_ACCOUNT_BUTTON)).click()
 
-    def check_warning_is_displayed(self):
-        self.browser.find_element(*self.WARNING_TEXT).is_displayed()
+    def is_warning_displayed(self, warning):
+        assert warning in self.browser.find_element(*self.WARNING_TEXT).text
+
+    def login(self, email, firstname, lastname, password):
+        self.type_email(email)
+        self.type_firstname(firstname)
+        self.type_lastname(lastname)
+        self.type_password(password)
+        self.click_create_account_button()
