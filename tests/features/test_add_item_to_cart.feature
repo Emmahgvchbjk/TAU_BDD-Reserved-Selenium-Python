@@ -12,4 +12,4 @@ Feature: add to cart
   Examples: Searched item
     | searched_item |
     | tricou        |
-#    | rochie        |
+    | blugi         |

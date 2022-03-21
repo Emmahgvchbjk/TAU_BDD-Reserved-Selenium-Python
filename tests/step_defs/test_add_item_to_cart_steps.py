@@ -32,11 +32,11 @@ def select_size(browser):
     search_page.select_size()
 
 @when(parsers.cfparse('the user clicks on "ad item to cart" and on "finalizeaza comanda"'))
-def add_to_cart(browser):
+def finalizeaza_comanda(browser):
     search_page = SearchPage(browser)
-    search_page.add_to_cart()
+    search_page.finalizeaza_comanda()
 
 @then(parsers.cfparse('the sections "esti membru nou" and "este prima ta vizita" appear'))
-def adauga(browser):
+def check_page(browser):
     search_page = SearchPage(browser)
-    search_page.adauga()
+    search_page.check_page()
